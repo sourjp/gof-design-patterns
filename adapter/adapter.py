@@ -27,7 +27,7 @@ class PrintBanner(Banner):
 class PrintBanner2(object):
     """PrintBanner2を移譲で作成、外部から移譲元にアクセスできない"""
 
-    def __init__(self, msg: str) -> str:
+    def __init__(self, msg: str):
         self._banner = Banner(msg)
 
     def print_weak(self) -> str:

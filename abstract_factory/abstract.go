@@ -61,7 +61,7 @@ type listTray struct {
 
 func (lt *listTray) makeHTML() string {
 	var sb strings.Builder
-	sb.WriteString(fmt.Sprintf("<li>\n%v\n<ul>", lt.caption))
+	sb.WriteString("<li>\n" + lt.caption + "\n<ul>")
 	for _, tray := range lt.trays {
 		sb.WriteString(tray.makeHTML())
 	}
@@ -76,15 +76,17 @@ type listPage struct {
 
 func (lp *listPage) Output() string {
 	var sb strings.Builder
-	sb.WriteString(fmt.Sprintf("<html><head><title>%v</title></head>\n"+
-		"<body>\n"+
-		"<h1>%v</h1>\n"+
-		"<ul>\n", lp.title, lp.title))
+	sb.WriteString("<html><head><title>" + lp.title + "</title></head>\n" +
+		"<body>\n" +
+		"<h1>" + lp.title + "</h1>\n" +
+		"<ul>\n")
 	for _, content := range lp.contents {
 		sb.WriteString(content.makeHTML())
 	}
-	sb.WriteString(fmt.Sprintf("</ul>\n"+
-		"<hr><address>%v</address></body></html>\n", lp.author))
+	sb.WriteString("</ul>\n" +
+		"<hr><address>" +
+		lp.author +
+		"</address></body></html>\n")
 	return sb.String()
 }
 

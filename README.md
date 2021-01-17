@@ -12,6 +12,7 @@
 
 - Adapter
 - Bridge
+- Composite
 
 ## 振る舞いに関するパターン
 

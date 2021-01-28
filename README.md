@@ -13,6 +13,7 @@
 - Adapter
 - Bridge
 - Composite
+- Decorator
 
 ## 振る舞いに関するパターン
 

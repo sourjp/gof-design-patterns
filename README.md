@@ -19,3 +19,4 @@
 
 - Iterator
 - Template Method
+- Visitor

@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "gof-design-patterns"
+version = "0.1.0"
+description = ""
+authors = ["sourjp <hiro0209.ki@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.812"
+flake8 = "^3.9.0"
+autopep8 = "^1.5.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

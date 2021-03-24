@@ -1,21 +1,37 @@
-#!/usr/bin/env python3
+"""I referred below sample.
 
-class Singleton(object):
-    """Singletonパターンを作るためにinstanceを返す
+https://en.wikipedia.org/wiki/Singleton_pattern
+https://ja.wikipedia.org/wiki/Singleton_%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3
+"""
 
-    classmethodにすることで、インスタンス化せずに直接アクセス可能にする
-    instanceが生成されている場合は、'_instance'が生成されるのでそれを確認する
-    >>> dir(cls)
-    >>> ['__class__', ..., '_instance', 'get_instance']
-    """
+from typing import Optional
 
-    def __init__(self, input: str):
-        self.input = input
 
-    @classmethod
-    def get_instance(cls, input: str) -> 'Singleton':
-        if not hasattr(cls, "_instance"):
-            cls._instance = cls(input)
-        else:
-            cls._instance.input = input
-        return cls._instance
+class DataBase:
+
+    __instance: Optional["DataBase"] = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls.__instance is None:
+            cls.__instance = super().__new__(cls)
+            if args or kwargs:
+                cls.__instance.__setup(*args, **kwargs)
+            else:
+                raise ValueError()
+        return cls.__instance
+
+    def __setup(self, database_url: str) -> None:
+        self.__database_url = database_url
+
+    @property
+    def database_url(self) -> str:
+        return self.__database_url
+
+    def connect(self) -> None:
+        pass
+
+
+if __name__ == '__main__':
+    db = DataBase(database_url='localhost:5432')
+    assert db.database_url == 'localhost:5432'
+    db.connect()

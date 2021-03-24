@@ -1,34 +1,34 @@
 from abc import ABC, abstractmethod
 
 
-class IProduct(ABC):
+class Product(ABC):
     pass
 
 
-class ProductA(IProduct):
+class ProductA(Product):
     pass
 
 
-class ProductB(IProduct):
+class ProductB(Product):
     pass
 
 
 class ICreator(ABC):
 
     @abstractmethod
-    def create_product(self) -> IProduct:
+    def create_product(self) -> Product:
         pass
 
 
 class CreatorA(ICreator):
 
-    def create_product(self) -> IProduct:
+    def create_product(self) -> Product:
         return ProductA()
 
 
 class CreatorB(ICreator):
 
-    def create_product(self) -> IProduct:
+    def create_product(self) -> Product:
         return ProductB()
 
 
